@@ -11,7 +11,7 @@ interface ThemeJSON {
   name: string
   colors?: Record<string, string>
   tokenColors?: {
-    scope: string
+    scope: string | string[]
     settings: ThemeJSONTokenSetting
   }[]
   semanticTokenColors?: {

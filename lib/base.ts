@@ -13,7 +13,7 @@ export interface Theme {
     [key in Colors]: chroma.Color
   }
   tokenColors?: {
-    scope: string
+    scope: string | string[]
     settings: ThemeTokenSetting
   }[]
   semanticTokenColors?: {
