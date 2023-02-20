@@ -14,10 +14,13 @@
     "type": "git",
     "url": "https://github.com/yklcs/deol-vscode"
   },
-  "icon": "https://raw.githubusercontent.com/yklcs/deol-vscode/main/icon.png",
+  "icon": "icon.png",
   "scripts": {
     "build": "tsc && node ./out/scripts/build.js",
-    "watch": "tsc -w & nodemon -w out ./out/scripts/build.js"
+    "watch": "tsc -w & nodemon -w out ./out/scripts/build.js",
+    "publish": "pnpm vsce publish",
+    "package": "pnpm build && pnpm vsce package",
+    "install": "pnpm package && code --install-extension *.vsix"
   },
   "contributes": {
     "themes": [
