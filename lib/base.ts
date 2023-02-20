@@ -1,12 +1,10 @@
 import chroma from "chroma-js"
 import type { Colors, FontStyle } from "./codeColors.js"
 
-type ThemeTokenSetting =
-  | chroma.Color
-  | {
-      foreground?: chroma.Color
-      fontStyle?: FontStyle | FontStyle[]
-    }
+interface ThemeTokenSetting {
+  foreground?: chroma.Color
+  fontStyle?: FontStyle | FontStyle[]
+}
 
 export interface Theme {
   colors: {
@@ -29,10 +27,10 @@ const c = 0.01
 const palette = {
   neutral: [
     chroma.oklch(0.18, c, h),
-    chroma.oklch(0.3, c, h),
-    chroma.oklch(0.45, c, h),
-    chroma.oklch(0.58, c, h),
-    chroma.oklch(0.73, c, h),
+    chroma.oklch(0.28, c, h),
+    chroma.oklch(0.43, c, h),
+    chroma.oklch(0.6, c, h),
+    chroma.oklch(0.75, c, h),
     chroma.oklch(0.85, c, h),
   ],
 }
@@ -105,11 +103,11 @@ export default {
   tokenColors: [
     {
       scope: "comment, punctuation.definition.comment",
-      settings: { foreground: palette.neutral.at(-4) }, // comment
+      settings: { foreground: palette.neutral.at(-4) },
     },
     {
       scope: "string",
-      settings: { foreground: palette.neutral.at(-2) },
+      settings: { foreground: palette.neutral.at(-3) },
     },
     {
       scope: "keyword",
@@ -131,9 +129,15 @@ export default {
       },
     },
     {
-      scope: "support.type.property-name",
+      scope: ["support.type.property-name", "entity.name.tag"],
       settings: {
         foreground: palette.neutral.at(-1),
+      },
+    },
+    {
+      scope: ["meta.structure.dictionary.value", "meta.property-value"],
+      settings: {
+        foreground: palette.neutral.at(-3),
       },
     },
   ],

@@ -1,11 +1,9 @@
 import BaseTheme from "./base.js"
 
-type ThemeJSONTokenSetting =
-  | string
-  | {
-      foreground?: string
-      fontStyle?: string
-    }
+interface ThemeJSONTokenSetting {
+  foreground?: string
+  fontStyle?: string
+}
 
 interface ThemeJSON {
   name: string
@@ -38,20 +36,18 @@ export default () => {
     }
     for (const val of BaseTheme.tokenColors) {
       let settings: ThemeJSONTokenSetting
-      if ("hex" in val.settings) {
-        settings = val.settings.hex()
-      } else {
-        settings = {}
-        Object.assign(settings, val.settings, {
-          foreground: val.settings.foreground?.hex(),
-        })
-        if (
-          "fontStyle" in val.settings &&
-          Array.isArray(val.settings.fontStyle)
-        ) {
-          settings.fontStyle = val.settings.fontStyle.join(" ")
-        }
+
+      settings = {}
+      Object.assign(settings, val.settings, {
+        foreground: val.settings.foreground?.hex(),
+      })
+      if (
+        "fontStyle" in val.settings &&
+        Array.isArray(val.settings.fontStyle)
+      ) {
+        settings.fontStyle = val.settings.fontStyle.join(" ")
       }
+
       theme.tokenColors.push({ scope: val.scope, settings })
     }
   }
@@ -63,17 +59,15 @@ export default () => {
     }
     for (const [key, val] of Object.entries(BaseTheme.semanticTokenColors)) {
       let settings: ThemeJSONTokenSetting
-      if ("hex" in val) {
-        settings = val.hex()
-      } else {
-        settings = {}
-        Object.assign(settings, val, {
-          foreground: val.foreground?.hex(),
-        })
-        if ("fontStyle" in settings && Array.isArray(settings.fontStyle)) {
-          settings.fontStyle = settings.fontStyle.join(" ")
-        }
+
+      settings = {}
+      Object.assign(settings, val, {
+        foreground: val.foreground?.hex(),
+      })
+      if ("fontStyle" in settings && Array.isArray(settings.fontStyle)) {
+        settings.fontStyle = settings.fontStyle.join(" ")
       }
+
       theme.semanticTokenColors[key] = settings
     }
   }
