@@ -99,6 +99,24 @@ export default {
     "statusBarItem.remoteBackground": palette.neutral.at(0),
 
     "titleBar.activeBackground": palette.neutral.at(0),
+
+    "terminal.ansiBlack": palette.neutral.at(0),
+    "terminal.ansiWhite": palette.neutral.at(-1),
+    "terminal.ansiYellow": chroma.oklch(0.7, 0.12, 100),
+    "terminal.ansiRed": chroma.oklch(0.7, 0.12, 20),
+    "terminal.ansiMagenta": chroma.oklch(0.7, 0.12, 345),
+    "terminal.ansiBlue": chroma.oklch(0.7, 0.12, 240),
+    "terminal.ansiCyan": chroma.oklch(0.7, 0.12, 190),
+    "terminal.ansiGreen": chroma.oklch(0.7, 0.12, 135),
+
+    "terminal.ansiBrightBlack": palette.neutral.at(1),
+    "terminal.ansiBrightWhite": palette.neutral.at(-1)?.brighten(0.2),
+    "terminal.ansiBrightYellow": chroma.oklch(0.8, 0.12, 100),
+    "terminal.ansiBrightRed": chroma.oklch(0.8, 0.12, 20),
+    "terminal.ansiBrightMagenta": chroma.oklch(0.8, 0.12, 345),
+    "terminal.ansiBrightBlue": chroma.oklch(0.8, 0.12, 240),
+    "terminal.ansiBrightCyan": chroma.oklch(0.8, 0.12, 190),
+    "terminal.ansiBrightGreen": chroma.oklch(0.8, 0.12, 135),
   },
   tokenColors: [
     {
