@@ -21,17 +21,17 @@ export interface Theme {
 
 const transparent = chroma("#ffffff00")
 
-const h = 250
 const c = 0.01
+const h = 240
 
 const palette = {
   neutral: [
     chroma.oklch(0.18, c, h),
-    chroma.oklch(0.28, c, h),
+    chroma.oklch(0.3, c, h),
     chroma.oklch(0.43, c, h),
     chroma.oklch(0.6, c, h),
     chroma.oklch(0.75, c, h),
-    chroma.oklch(0.85, c, h),
+    chroma.oklch(0.87, c, h),
   ],
 }
 
@@ -120,30 +120,23 @@ export default {
   },
   tokenColors: [
     {
-      scope: "comment, punctuation.definition.comment",
+      scope: ["comment", "punctuation.definition.comment"],
       settings: { foreground: palette.neutral.at(-4) },
     },
     {
-      scope: "string",
+      scope: ["string", "constant"],
       settings: { foreground: palette.neutral.at(-3) },
     },
     {
-      scope: "keyword",
+      scope: ["keyword.control", "keyword.other"],
       settings: {
         fontStyle: ["bold"],
-      },
-    },
-    {
-      scope: "meta.object-literal.key",
-      settings: {
-        fontStyle: "italic",
       },
     },
     {
       scope: "meta.object-literal.key string",
       settings: {
         foreground: palette.neutral.at(-1),
-        fontStyle: "italic",
       },
     },
     {
@@ -156,6 +149,12 @@ export default {
       scope: ["meta.structure.dictionary.value", "meta.property-value"],
       settings: {
         foreground: palette.neutral.at(-3),
+      },
+    },
+    {
+      scope: ["storage", "support.type"],
+      settings: {
+        foreground: palette.neutral.at(-2),
       },
     },
   ],

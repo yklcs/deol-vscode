@@ -20,7 +20,7 @@
     "watch": "tsc -w & nodemon -w out ./out/scripts/build.js",
     "publish": "pnpm vsce publish",
     "package": "pnpm build && pnpm vsce package",
-    "install": "pnpm package && code --install-extension *.vsix"
+    "install-vsix": "pnpm package && code --install-extension *.vsix"
   },
   "contributes": {
     "themes": [
