@@ -1,4 +1,4 @@
-import BaseTheme from "./base.js"
+import builder, { PaletteSetting } from "./builder.js"
 
 interface ThemeJSONTokenSetting {
   foreground?: string
@@ -18,23 +18,24 @@ interface ThemeJSON {
   semanticHighlighting: boolean
 }
 
-export default () => {
+export default (palette: PaletteSetting) => {
+  const built = builder(palette)
   const theme = { name: "deol", semanticHighlighting: false } as ThemeJSON
 
-  if (BaseTheme.colors !== undefined) {
+  if (built.colors !== undefined) {
     if (theme.colors === undefined) {
       theme.colors = {}
     }
-    for (const [key, val] of Object.entries(BaseTheme.colors)) {
+    for (const [key, val] of Object.entries(built.colors)) {
       theme.colors[key] = val.hex()
     }
   }
 
-  if (BaseTheme.tokenColors !== undefined) {
+  if (built.tokenColors !== undefined) {
     if (theme.tokenColors === undefined) {
       theme.tokenColors = []
     }
-    for (const val of BaseTheme.tokenColors) {
+    for (const val of built.tokenColors) {
       let settings: ThemeJSONTokenSetting
 
       settings = {}
@@ -52,12 +53,12 @@ export default () => {
     }
   }
 
-  if (BaseTheme.semanticTokenColors !== undefined) {
+  if (built.semanticTokenColors !== undefined) {
     theme.semanticHighlighting = true
     if (theme.semanticTokenColors === undefined) {
       theme.semanticTokenColors = {}
     }
-    for (const [key, val] of Object.entries(BaseTheme.semanticTokenColors)) {
+    for (const [key, val] of Object.entries(built.semanticTokenColors)) {
       let settings: ThemeJSONTokenSetting
 
       settings = {}

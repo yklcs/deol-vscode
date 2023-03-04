@@ -25,9 +25,14 @@
   "contributes": {
     "themes": [
       {
-        "label": "deol-vscode",
+        "label": "Deol",
         "uiTheme": "vs-dark",
         "path": "./themes/deol-vscode-color-theme.json"
+      },
+      {
+        "label": "Deol Dull",
+        "uiTheme": "vs-dark",
+        "path": "./themes/deol-dull-vscode-color-theme.json"
       }
     ]
   },
